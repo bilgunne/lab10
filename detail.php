@@ -10,7 +10,7 @@
     <h2>Тасгийн мэдээллийг харах хуудас.</h2>
 
     <label>Хайх утгыг оруулна уу?</label> <br>
-    <label>Жишээлбэл: HI001-HI050, S01-S08</label> <br>
+    <label>Жишээлбэл: SI001-SI030, S01-S08</label> <br>
     <input type="character" id="parameterinput">
     <button onclick="activatephp()">Хайх</button>
 
