@@ -1,0 +1,123 @@
+storeholditems
+     itemNo
+     itemname
+     size
+
+section
+     sectionNo
+     sectionname
+     area
+
+itemlocation
+     itemNo
+     sectionNo
+     quantity
+     condition1 (new, used)
+
+CREATE TABLE householditems (
+     itemNo CHAR(5) PRIMARY KEY,
+     itemname VARCHAR(300),
+     size VARCHAR(5)
+);
+
+CREATE TABLE itemlocation (
+     itemNo CHAR(5),
+     sectionNo CHAR(3),
+     quantity INT,
+     condition1 VARCHAR(4),
+     FOREIGN KEY (itemNo) REFERENCES storeholditems(itemNo) ON UPDATE CASCADE,
+     FOREIGN KEY (sectionNo) REFERENCES section(sectionNo) ON UPDATE CASCADE
+);
+
+INSERT INTO storeholditems (itemNo, itemname, size)
+VALUES 
+('SI001','Tedy Bear','Small'),
+('SI002','Computer','Small'),
+('SI003','Lego','Big'),
+('SI004','Car','Small'),
+('SI005','Barbi','Small'),
+('SI006','Pen','Small'),
+('SI007','Book','Small'),
+('SI008','Shelf','Big'),
+('SI012','Earrings','Small'),
+('SI013','Bracelet','Small'),
+('SI014','Ring','Small'),
+('SI015','Necklace','Small'),
+('SI016','Mouse','Small'),
+('SI017','Keyboard','Small'),
+('SI018','Monitor','Big'),
+('SI019','Television','Big'),
+('SI020','Phone','Small'),
+('SI021','Wine Opener','Small'),
+('SI022','Paper bag','Small'),
+('SI023','Candle','Small'),
+('SI024','Wine','Small'),
+('SI025','A Glass','Small'),
+('SI026','Pot','Big'),
+('SI027','Clock','Big'),
+('SI028','Table','Big'),
+('SI029','Air Purifier','Smll'),
+('SI030','Mirror','Big'),
+('SI031','Sneakers','Small'),
+('SI032','Tshirt','Big'),
+('SI033','Wrist Protection','Small'),
+('SI034','Swimming Glasses','Small'),
+('SI035','Ball','Small'),
+('SI036','Tennis Racket','Small'),
+('SI037','Cup','Small'),
+
+INSERT INTO section (sectionNo, sectionname, area)
+VALUES
+('S01', 'Clothing Store', 107.5),
+('S02','Electronics Store', 150.4),
+('S03','Home and Furniture Store', 150.4),
+('S04','Bookstore', 100.0),
+('S05','Beauty Store', 24.75),
+('S06','Sporting Goods Store', 64.0),
+('S07','Toy Store', 210.25),
+('S08','Jewelry Store', 35.5),
+('S09','Wine Store', 50.0),
+
+INSERT INTO itemlocation (itenNo, sectionNo, quantity, condition1)
+VALUES
+('SI001','S07','new'),
+('SI002','S02','new'),
+('SI003','S07','new'),
+('SI004','S07','new'),
+('SI005','S07','new'),
+('SI006','S04','used'),
+('SI007','S04','new'),
+('SI008','S04','used'),
+('SI008','S01','used'),
+('SI008','S02','used'),
+('SI008','S03','used'),
+('SI012','S08','new'),
+('SI013','S08','new'),
+('SI014','S08','new'),
+('SI015','S08','new'),
+('SI016','S02','used'),
+('SI017','S02','new'),
+('SI018','S02','new'),
+('SI019','S02','new'),
+('SI020','S20','used'),
+('SI021','S09','used'),
+('SI022','S09','new'),
+('SI023','S09','new'),
+('SI024','S09','new'),
+('SI025','S09','used'),
+('SI026','S03','new'),
+('SI027','S03','new'),
+('SI028','S03','new'),
+('SI029','S03','used'),
+('SI030','S03','used'),
+('SI031','S06','new'),
+('SI032','S06','new'),
+('SI033','S06','new'),
+('SI034','S06','new'),
+('SI035','S06','new'),
+('SI036','S06','new'),
+('SI037','S01','used'),
+('SI037','S02','used'),
+('SI037','S03','used'),
+('SI037','S04','used'),
+    
