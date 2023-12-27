@@ -28,6 +28,48 @@
 
     <div id="result"></div>
 
-   
+    <script>
+        function activatephp() {
+            var selectelement = document.getElementById("sectionlist");
+            var parametervalue = selectelement.value;
+
+            fetch('clientdbsearch.php?parameter=' + parametervalue)
+                .then(Response => Response.json())
+                .then(data => {
+                    display(data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        function display(data) {
+            var selectelement = document.getElementById("sectionlist");
+            var parametervalue = selectelement.value;
+
+            var divelement = document.getElementById("result");
+            divelement.innerHTML = "";
+
+            if (data.message) {
+                divelement.innerHTML = "<p>Үр дүн олдсонгүй.</p>";
+            } else {
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var a = 0
+                        var records = JSON.parse(xhr.responseText);
+                        records.forEach(function(record) {
+                            if (a == 0) {
+                                divelement.innerHTML = "<p>" + record.roomname + " тасаг нь " + record.area + " метр квадратын талбайтай тасаг байна. Үүнд:</p>";
+                                a = a + 1;
+                            }
+                            divelement.innerHTML += "<p>" + record.size + " " + record.condition + " " + record.itemname + " нь " + record.quantity + " ширхэг байна. " + "</p>";
+                        })
+                    }
+                }
+        }   
+    }
+    </script>
 </body>
 </html>
