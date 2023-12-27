@@ -16,6 +16,34 @@
 
     <div id="result"></div>
 
+    <script>
+        function activatephp() {
+            var parametervalue = document.getElementById("parameterinput").value
+
+            fetch('searchdata.php?parameter=' + parametervalue)
+            .then(Response => Response.json())
+            .then(data => {
+                display(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        }
+
+        function display(data) {
+            var divelement = document.getElementById("result");
+            divelement.innerHTML = "";
+
+            if (data.message) {
+                divelement.innerHTML = "<p>Үр дүн олдсонгүй.</p>";
+            } else {
+                data.forEach(record => {
+                    divelement.innerHTML += "<p>" + record.sectiono + " нэртэй тасагт " + record.condition + " " + record.itemno + " " + record.quantity + " ширхэг байна. "  + "</p>";
+                });
+            }
+        }
+
+    </script>
 
 </body>
 </html>
